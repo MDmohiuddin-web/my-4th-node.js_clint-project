@@ -15,7 +15,6 @@ import Sinup from "./Users/Sinup";
 import AuthProvider from "./Provider/AuthProvider";
 import Users from "./Users/Users";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,22 +44,23 @@ const router = createBrowserRouter([
       {
         path: "/Login",
         element: <Login></Login>,
-      },{
-        path:'/signup',
-        element:<Sinup></Sinup>
       },
       {
-        path:'/Users',
-        element:<Users></Users>,
-        loader:()=>fetch('http://localhost:1001/users')
-      }
+        path: "/signup",
+        element: <Sinup></Sinup>,
+      },
+      {
+        path: "/Users",
+        element: <Users></Users>,
+        loader: () => fetch("http://localhost:1001/user"),
+      },
     ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider><RouterProvider router={router} /></AuthProvider>
-     
-   
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
